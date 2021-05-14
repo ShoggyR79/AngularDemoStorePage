@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12 mt-5">
+    <h1 class="display-4">Giỏ Hàng</h1>
+  </div>
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Hình Ảnh</th>
+          <th>Sản Phẩm</th>
+          <th>Giá</th>
+          <th>Số Lượng</th>
+          <th>Tổng Cộng</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart">
+          <td><img style="width:200px; height:150px;" src={{item.img}} /></td>
+          <td style="font-size:25px;">{{item.name}}</td>
+          <td>${{item.price}}</td>
+          <td>
+            {{item.amount}}
+            <div class="btn-group">
+              <button (click)="changeAmount(item.id, false)" class="btn btn-info border-right">-</button>
+              <button (click)="changeAmount(item.id, true)" class="btn btn-info border-left">+</button>
+            </div>
+          </td>
+          <td>${{item.price * item.amount}}</td>
+          <td>
+            <button (click)="deleteItem(item.id)" class="btn btn-info">x</button>
+          </td>
+        </tr>
+      </tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="font-size:30px" class="font-weight-bold">Tổng Tiền</td>
+        <td style="font-size:30px" class="font-weight-bold">${{total}}</td>
+        <td>
+          <button style="font-size:30px" class="btn btn-info">Thanh Toán</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
